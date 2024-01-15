@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Test Print with line.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife print line.dat",
+      "input": "",
+      "output": " 0  0  0  0  0\n  0  0  0  0  0\n  0  1  1  1  0\n  0  0  0  0  0\n  0  0  0  0  0\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Print with square.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife print square.dat",
+      "input": "",
+      "output": "  0  0  0  0\n  0  1  1  0\n  0  1  1  0\n  0  0  0  0\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Print with pulsar.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife print pulsar.dat",
+      "input": "",
+      "output": "  0  0  0  0  0  0\n  0  0  0  0  0  0\n  0  0  1  1  1  0\n  0  1  1  1  0  0\n  0  0  0  0  0  0\n  0  0  0  0  0  0\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Print with hynotic.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife print hypnotic.dat",
+      "input": "",
+      "output": "  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0\n",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Cell Value Function with line.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife cellValue line.dat",
+      "input": "",
+      "output": "Cell (2, 2) - Expected Next Value: 0, Actual Next Value: 0\nCell (2, 3) - Expected Next Value: 1, Actual Next Value: 1\nCell (3, 2) - Expected Next Value: 0, Actual Next Value: 0\nCell (3, 3) - Expected Next Value: 1, Actual Next Value: 1\nCell (4, 3) - Expected Next Value: 1, Actual Next Value: 1\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "Test Count Function with square.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife count square.dat",
+      "input": "",
+      "output": "Cell (2, 2) - Expected Neighbors: 3, Actual Neighbors: 3\nCell (2, 3) - Expected Neighbors: 3, Actual Neighbors: 3\nCell (3, 2) - Expected Neighbors: 3, Actual Neighbors: 3\nCell (3, 3) - Expected Neighbors: 3, Actual Neighbors: 3\nCell (4, 3) - Expected Neighbors: 2, Actual Neighbors: 2\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "Test Evolve Function with line.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife evolve line.dat",
+      "input": "",
+      "output": "Generation 0:\n  0  0  0  0  0\n  0  0  0  0  0\n  0  1  1  1  0\n  0  0  0  0  0\n  0  0  0  0  0\nGeneration 1:\n  0  0  0  0  0\n  0  0  1  0  0\n  0  0  1  0  0\n  0  0  1  0  0\n  0  0  0  0  0\nGeneration 2:\n  0  0  0  0  0\n  0  0  0  0  0\n  0  1  1  1  0\n  0  0  0  0  0\n  0  0  0  0  0\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "Test Evolve Function with square.dat",
+      "setup": "javac TesterGameOfLife.java",
+      "run": "java TesterGameOfLife evolve square.dat",
+      "input": "",
+      "output": "Generation 0:\n  0  0  0  0\n  0  1  1  0\n  0  1  1  0\n  0  0  0  0\nGeneration 1:\n  0  0  0  0\n  0  1  1  0\n  0  1  1  0\n  0  0  0  0\nGeneration 2:\n  0  0  0  0\n  0  1  1  0\n  0  1  1  0\n  0  0  0  0\n",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
