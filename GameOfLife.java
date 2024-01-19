@@ -2,10 +2,10 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		String fileName = args[0];
-		test1(fileName);
-		test2(fileName);
+		// test1(fileName);
+		// test2(fileName);
 		// test3(fileName, 3);
-		// play(fileName);
+		play(fileName);
 	}
 	
 	public static void test1(String fileName) {
@@ -109,6 +109,20 @@ public class GameOfLife {
 	// (The cell itself is not counted).
 	// Assumes that i is at least 1 and at most the number of rows in the board - 1. 
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
+
+	public static int count(int[][] board, int i, int j) {
+		int livingNeighbors = 0;
+		for (int x = Math.max(i - 1, 0); x <= Math.min(i + 1, board.length - 1); x++) {
+			for (int y = Math.max(j - 1, 0); y <= Math.min(j + 1, board[0].length - 1); y++) {
+				if (board[x][y] == 1) {
+					livingNeighbors++;
+				}
+			}
+		}
+		livingNeighbors -= board[i][j]; // Subtract the cell itself if it is alive.
+		return livingNeighbors;
+	}
+
 	// public static int count(int[][] board, int i, int j) {
 	// 	System.out.println("("+i+","+j+")="+board[i][j]);
 	// 	int alive=0;
@@ -122,17 +136,16 @@ public class GameOfLife {
 	// 	return alive-board[i][j];
 	// }
 
-	public static int count(int[][] board, int i, int j) {
-		int livingNeighbors = 0;
-		int[] neighbors = {board[i-1][j-1], board[i-1][j], board[i-1][j+1], board[i][j-1], board[i][j+1], board[i+1][j-1], board[i+1][j], board[i+1][j+1]};
-		for (int k = 0; k < neighbors.length; k++) {
-			if (neighbors[k] == 1) {
-				livingNeighbors++;
-			}
-		}
-	
-		return livingNeighbors;
-	}
+	// public static int count(int[][] board, int i, int j) {
+	// 	int alive = 0;
+	// 	int[] neig = {board[i-1][j-1], board[i-1][j], board[i-1][j+1], board[i][j-1], board[i][j+1], board[i+1][j-1], board[i+1][j], board[i+1][j+1]};
+	// 	for (int k = 0; k < neig.length; k++) {
+	// 		if (neig[k] == 1) {
+	// 			alive++;
+	// 		}
+	// 	}
+	// 	return alive;
+	// }
 	
     public static void print(int[][] arr) {
 		// System.out.println("Full");
