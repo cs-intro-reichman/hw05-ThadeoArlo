@@ -142,7 +142,7 @@ public class GameOfLife {
 		// System.out.println("Small");
 		for (int p=1; p<arr.length-1; p++) {
 			for (int q=1; q<arr[0].length-1; q++) { 
-				System.out.printf("%3d", arr[p][q]);
+				System.out.printf("%2d", arr[p][q]);
 			}
 			System.out.println();
 		}
