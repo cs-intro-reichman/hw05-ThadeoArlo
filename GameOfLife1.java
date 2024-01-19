@@ -11,7 +11,7 @@
 		String fileName = args[0];
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
-		// test1(fileName);
+		test1(fileName);
 		test2(fileName);
 		// test3(fileName, 3);
 		// play(fileName);
@@ -27,21 +27,15 @@
 	// the count and cellValue functions.
 	public static void test2(String fileName) {
 		int[][] board = read(fileName);
-		System.out.println(" count:" + count(board, 3, 3));
+		System.out.println(" count:" + count(board, 1, 1));
 		print(board);
 		System.out.println();
-
-		for (int i = 1; i < board.length-1; i++) {
-			for (int j = 1; j < board[0].length-1; j++) {
+		for (int i=1; i<board.length-1; i++) {
+			for (int j=1; j<board[0].length-1; j++) {
 				board[i][j] = cellValue(board, i, j);
 			}
 		}
-
-		// board[3][3] = 8;
-
 		print(board);
-	
-		
 	}
 
 	// Reads the data file, plays the game for Ngen generations, 
@@ -148,7 +142,6 @@
 				return 0;
 			}
 		}
-
 	}
 	
 	// Counts and returns the number of living neighbors of the given cell

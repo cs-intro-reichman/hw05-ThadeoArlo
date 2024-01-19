@@ -2,7 +2,7 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		String fileName = args[0];
-		// test1(fileName);
+		test1(fileName);
 		test2(fileName);
 		// test3(fileName, 3);
 		// play(fileName);
@@ -15,7 +15,16 @@ public class GameOfLife {
 		
 	public static void test2(String fileName) {
 		int[][] board = read(fileName);
-		System.out.println("Next gen: "+cellValue(board, 2,2));
+		System.out.println(" count:" + count(board, 1, 1));
+		// System.out.println(" count:" + count(board, 3, 3));
+		// print(board);
+		// System.out.println();
+		// for (int i=1; i<board.length-1; i++) {
+		// 	for (int j=1; j<board[0].length-1; j++) {
+		// 		board[i][j] = cellValue(board, i, j);
+		// 	}
+		// }
+		// print(board);
 	}
 		
 	// Reads the data file, plays the game for Ngen generations, 
@@ -60,20 +69,6 @@ public class GameOfLife {
 			}
 		}
 
-		// int[][] board = new int[rows][cols];
-		// for (int p=0; p<board.length-1; p++) {
-		// 	String line=in.readLine();
-		// 	if (line==null) {
-		// 		for (int q=0; q<board[0].length-1; q++) {
-		// 			board[p][q] = 0;
-		// 		}
-		// 	} else {
-		// 		for (int q=0; q<line.length(); q++) {
-		// 			board[p][q] = (line.charAt(q) == 'x') ? 1 : 0;
-		// 		}
-		// 	}
-		// }
-
 		return board;
 	}
 	
@@ -102,33 +97,41 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
 	public static int cellValue(int[][] board, int i, int j) {
-		int c = board[i][j];
 		int neig = count(board, i, j);
-		if (c==1) {
-			if (neig<2) return 0;
-			if (neig==2||neig==3) return 1;
-			if (neig>3) return 0;			
-		} else if (c==0) {
-			if (neig==3) return 1;
+		if (board[i][j]==1) {
+			if (neig<2 || neig>3) return 0; else return 1;
+		} else {
+			if (neig==3) return 1; else return 0;
 		}
-		return c;
 	}
 	
 	// Counts and returns the number of living neighbors of the given cell
 	// (The cell itself is not counted).
 	// Assumes that i is at least 1 and at most the number of rows in the board - 1. 
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
+	// public static int count(int[][] board, int i, int j) {
+	// 	System.out.println("("+i+","+j+")="+board[i][j]);
+	// 	int alive=0;
+	// 	for (int p=j-1; p<=j+1; p++) {
+	// 		for (int q=i-1; q<=i+1; q++) { 
+	// 			System.out.printf("%2d", board[p][q]);
+	// 			if (board[p][q]==1) alive++;
+	// 		}
+	// 		System.out.println();
+	// 	}
+	// 	return alive-board[i][j];
+	// }
+
 	public static int count(int[][] board, int i, int j) {
-		// System.out.println("("+i+","+j+") = "+board[i][j]);
-		int alive=0;
-		for (int p=j-1; p<=j+1; p++) {
-			for (int q=i-1; q<=i+1; q++) { 
-				// System.out.printf("%2d", board[p][q]);
-				if (board[p][q]==1) alive++;
+		int livingNeighbors = 0;
+		int[] neighbors = {board[i-1][j-1], board[i-1][j], board[i-1][j+1], board[i][j-1], board[i][j+1], board[i+1][j-1], board[i+1][j], board[i+1][j+1]};
+		for (int k = 0; k < neighbors.length; k++) {
+			if (neighbors[k] == 1) {
+				livingNeighbors++;
 			}
-			// System.out.println();
 		}
-		return alive-board[i][j];
+	
+		return livingNeighbors;
 	}
 	
     public static void print(int[][] arr) {
