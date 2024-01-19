@@ -15,16 +15,15 @@ public class GameOfLife {
 		
 	public static void test2(String fileName) {
 		int[][] board = read(fileName);
-		System.out.println(" count:" + count(board, 1, 1));
-		// System.out.println(" count:" + count(board, 3, 3));
-		// print(board);
-		// System.out.println();
-		// for (int i=1; i<board.length-1; i++) {
-		// 	for (int j=1; j<board[0].length-1; j++) {
-		// 		board[i][j] = cellValue(board, i, j);
-		// 	}
-		// }
-		// print(board);
+		print(board);
+		System.out.println(" count:" + count(board, 3, 3));
+		System.out.println();
+		for (int i=1; i<board.length-1; i++) {
+			for (int j=1; j<board[0].length-1; j++) {
+				board[i][j] = cellValue(board, i, j);
+			}
+		}
+		print(board);
 	}
 		
 	// Reads the data file, plays the game for Ngen generations, 
@@ -111,41 +110,18 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 
 	public static int count(int[][] board, int i, int j) {
-		int livingNeighbors = 0;
-		for (int x = Math.max(i - 1, 0); x <= Math.min(i + 1, board.length - 1); x++) {
-			for (int y = Math.max(j - 1, 0); y <= Math.min(j + 1, board[0].length - 1); y++) {
-				if (board[x][y] == 1) {
-					livingNeighbors++;
-				}
+		// System.out.println("("+i+","+j+")="+board[i][j]);
+		int alive=0;
+		for (int p=Math.max(i-1,0); p<=Math.min(i+1,board.length-1); p++) {
+			for (int q=Math.max(j-1,0); q<=Math.min(j+1,board[0].length-1); q++) { 
+				// System.out.printf("%2d", board[p][q]);
+				if (board[p][q]==1) alive++;
 			}
+			// System.out.println();
 		}
-		livingNeighbors -= board[i][j]; // Subtract the cell itself if it is alive.
-		return livingNeighbors;
+		return alive-board[i][j];
 	}
-
-	// public static int count(int[][] board, int i, int j) {
-	// 	System.out.println("("+i+","+j+")="+board[i][j]);
-	// 	int alive=0;
-	// 	for (int p=j-1; p<=j+1; p++) {
-	// 		for (int q=i-1; q<=i+1; q++) { 
-	// 			System.out.printf("%2d", board[p][q]);
-	// 			if (board[p][q]==1) alive++;
-	// 		}
-	// 		System.out.println();
-	// 	}
-	// 	return alive-board[i][j];
-	// }
-
-	// public static int count(int[][] board, int i, int j) {
-	// 	int alive = 0;
-	// 	int[] neig = {board[i-1][j-1], board[i-1][j], board[i-1][j+1], board[i][j-1], board[i][j+1], board[i+1][j-1], board[i+1][j], board[i+1][j+1]};
-	// 	for (int k = 0; k < neig.length; k++) {
-	// 		if (neig[k] == 1) {
-	// 			alive++;
-	// 		}
-	// 	}
-	// 	return alive;
-	// }
+	
 	
     public static void print(int[][] arr) {
 		// System.out.println("Full");
